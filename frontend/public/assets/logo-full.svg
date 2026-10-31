@@ -1,0 +1,21 @@
+<svg viewBox="0 0 640 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Издателство Млада гвардия">
+  <defs>
+    <linearGradient id="mg-red-full" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c62828"/>
+      <stop offset="100%" stop-color="#6e1414"/>
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(10,10)">
+    <circle cx="80" cy="80" r="76" fill="url(#mg-red-full)"/>
+    <circle cx="80" cy="80" r="76" fill="none" stroke="#3d0d0d" stroke-width="2"/>
+    <path d="M80,106 C78.7,80 67,66 42,63 C40.7,66 39.3,100 42,106 C53.3,115 69.3,114 80,106 Z" fill="#f3e6d3"/>
+    <path d="M80,106 C81.3,80 93,66 118,63 C119.3,66 120.7,100 118,106 C106.7,115 90.7,114 80,106 Z" fill="#f3e6d3"/>
+    <path d="M80,63 L80,108" stroke="#6e1414" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M80,41 L82.78,48.23 L90.35,48.7 L84.44,53.44 L86.27,60.79 L80,56.67 L73.73,60.79 L75.56,53.44 L69.65,48.7 L77.22,48.23 Z" fill="#f3e6d3"/>
+  </g>
+
+  <text x="192" y="92" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" letter-spacing="2" fill="#6e1414">МЛАДА</text>
+  <text x="192" y="142" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700" letter-spacing="2" fill="#c62828">ГВАРДИЯ</text>
+  <text x="194" y="164" font-family="Arial, sans-serif" font-size="15" letter-spacing="4" fill="#4a3a3a">ИЗДАТЕЛСТВО</text>
+</svg>

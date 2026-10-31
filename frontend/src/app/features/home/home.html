@@ -1,0 +1,58 @@
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <span class="eyebrow">Издателство основано на принципа на солидарността</span>
+      <h1>Книги, които не забравят борбата на обикновения човек</h1>
+      <p class="hero__lead">
+        „Млада гвардия“ издава художествена литература, история и публицистика, посветени на
+        съпротивата срещу фашизма, работническото движение и борбата за по-справедлив свят.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn-primary" routerLink="/knigi">Разгледай книгите</a>
+        <a class="btn btn-outline" routerLink="/celi">Нашите цели</a>
+      </div>
+    </div>
+
+    <div class="hero__emblem">
+      <img src="assets/logo-mark.svg" alt="Емблема на издателство Млада гвардия" width="220" height="220">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Препоръчани</span>
+    <h2>Избрано от издателството</h2>
+
+    @if (loading()) {
+      <app-spinner />
+    } @else if (books().length === 0) {
+      <p class="text-muted">Все още няма добавени книги.</p>
+    } @else {
+      <div class="grid-books">
+        @for (book of books(); track book._id) {
+          <app-book-card [book]="book" />
+        }
+      </div>
+    }
+  </div>
+</section>
+
+<section class="section section--muted">
+  <div class="container mission">
+    <div>
+      <span class="eyebrow">Защо „Млада гвардия“</span>
+      <h2>Издателство на страната на труда</h2>
+      <p>
+        Вярваме, че литературата е оръжие на паметта. Издаваме книги, които разказват за
+        съпротивата срещу потисничеството, за солидарността между хората на труда и за
+        историите, които официалната версия често пропуска.
+      </p>
+    </div>
+    <ul class="mission__list">
+      <li><strong>Достъпни цени</strong> — книгата трябва да стига до всеки читател.</li>
+      <li><strong>Исторически извори</strong> — работим с архиви и свидетелства от първа ръка.</li>
+      <li><strong>Нови гласове</strong> — подкрепяме съвременни автори с лява чувствителност.</li>
+    </ul>
+  </div>
+</section>

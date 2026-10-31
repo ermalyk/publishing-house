@@ -1,0 +1,22 @@
+<a class="book-card card" [routerLink]="['/knigi', book().slug]">
+  <div class="book-card__cover">
+    @if (book().coverImage) {
+      <img [src]="book().coverImage" [alt]="book().title">
+    } @else {
+      <span class="book-card__placeholder">{{ book().title.charAt(0) }}</span>
+    }
+    <span class="badge book-card__type">{{ book().type }}</span>
+  </div>
+
+  <div class="book-card__body">
+    <h3 class="book-card__title">{{ book().title }}</h3>
+    <p class="book-card__author text-muted">{{ book().author }}</p>
+
+    <div class="book-card__footer">
+      <span class="book-card__price">{{ book().price.toFixed(2) }} лв.</span>
+      <button class="btn btn-primary btn-sm" type="button" (click)="addToCart($event)">
+        Купи
+      </button>
+    </div>
+  </div>
+</a>

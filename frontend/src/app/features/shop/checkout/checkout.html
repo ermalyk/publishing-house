@@ -1,0 +1,63 @@
+<section class="section">
+  <div class="container checkout">
+    <div>
+      <span class="eyebrow">Онлайн магазин</span>
+      <h1>Плащане</h1>
+
+      @if (items().length === 0) {
+        <p class="text-muted">Количката ви е празна.</p>
+        <a class="btn btn-primary" routerLink="/knigi">Разгледай книгите</a>
+      } @else {
+        <form class="card checkout__form" [formGroup]="form" (ngSubmit)="submit()">
+          @if (error()) {
+            <p class="alert alert-error">{{ error() }}</p>
+          }
+
+          <div class="form-field">
+            <label for="city">Град</label>
+            <input id="city" type="text" formControlName="city">
+          </div>
+
+          <div class="form-field">
+            <label for="line1">Адрес</label>
+            <input id="line1" type="text" formControlName="line1">
+          </div>
+
+          <div class="form-field">
+            <label for="postalCode">Пощенски код</label>
+            <input id="postalCode" type="text" formControlName="postalCode">
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Телефон</label>
+            <input id="phone" type="tel" formControlName="phone">
+          </div>
+
+          <p class="text-muted checkout__note">
+            Демо режим: поръчката се записва в системата без реално разплащане.
+          </p>
+
+          <button class="btn btn-primary btn-block" type="submit" [disabled]="submitting()">
+            {{ submitting() ? 'Изпращане…' : 'Потвърди поръчката' }}
+          </button>
+        </form>
+      }
+    </div>
+
+    <aside class="card checkout__summary">
+      <h3>Поръчка</h3>
+      <ul>
+        @for (item of items(); track item.bookId) {
+          <li>
+            <span>{{ item.title }} × {{ item.quantity }}</span>
+            <span>{{ (item.price * item.quantity).toFixed(2) }} лв.</span>
+          </li>
+        }
+      </ul>
+      <div class="checkout__total">
+        <span>Общо</span>
+        <strong>{{ total().toFixed(2) }} лв.</strong>
+      </div>
+    </aside>
+  </div>
+</section>

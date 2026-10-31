@@ -1,0 +1,36 @@
+<section class="section auth-section">
+  <div class="container auth-container">
+    <form class="card auth-card" [formGroup]="form" (ngSubmit)="submit()">
+      <span class="eyebrow">Регистрация</span>
+      <h1>Създайте профил</h1>
+
+      @if (error()) {
+        <p class="alert alert-error">{{ error() }}</p>
+      }
+
+      <div class="form-field">
+        <label for="name">Име</label>
+        <input id="name" type="text" formControlName="name" autocomplete="name">
+      </div>
+
+      <div class="form-field">
+        <label for="email">Имейл</label>
+        <input id="email" type="email" formControlName="email" autocomplete="email">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Парола</label>
+        <input id="password" type="password" formControlName="password" autocomplete="new-password">
+        <span class="text-muted">Поне 6 символа.</span>
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="loading()">
+        {{ loading() ? 'Регистриране…' : 'Регистрация' }}
+      </button>
+
+      <p class="auth-card__footer">
+        Вече имате профил? <a routerLink="/vhod">Влезте</a>
+      </p>
+    </form>
+  </div>
+</section>

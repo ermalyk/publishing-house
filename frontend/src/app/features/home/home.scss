@@ -1,0 +1,74 @@
+.hero {
+  background: linear-gradient(135deg, var(--color-primary-pale) 0%, var(--color-bg) 65%);
+  padding: 64px 0;
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.hero__text {
+  max-width: 620px;
+}
+
+.hero__lead {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.hero__emblem {
+  flex-shrink: 0;
+  filter: drop-shadow(var(--shadow-md));
+}
+
+.mission {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.mission__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .mission {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero__emblem img {
+    width: 140px;
+    height: 140px;
+  }
+}

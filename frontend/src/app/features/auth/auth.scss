@@ -1,0 +1,18 @@
+.auth-section {
+  display: flex;
+  justify-content: center;
+}
+
+.auth-container {
+  max-width: 440px;
+}
+
+.auth-card {
+  padding: 36px 32px;
+}
+
+.auth-card__footer {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.9rem;
+}

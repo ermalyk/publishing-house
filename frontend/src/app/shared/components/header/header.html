@@ -1,0 +1,83 @@
+<header class="header">
+  <div class="header__bar container">
+    <app-logo />
+
+    <button class="header__search-toggle" type="button" (click)="toggleSearch()" aria-label="Търсене в сайта">
+      <span class="header__search-icon">⌕</span>
+    </button>
+
+    <button class="header__burger" type="button" (click)="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="header__nav" [class.header__nav--open]="menuOpen()">
+      <ul>
+        @for (link of navLinks; track link.path) {
+          <li>
+            <a [routerLink]="link.path" routerLinkActive="is-active" (click)="closeMenu()">{{ link.label }}</a>
+          </li>
+        }
+      </ul>
+
+      <div class="header__actions">
+        <a class="header__cart" routerLink="/kosnica" (click)="closeMenu()" aria-label="Количка">
+          <span class="header__cart-icon">🛒</span>
+          @if (cartCount() > 0) {
+            <span class="header__cart-badge">{{ cartCount() }}</span>
+          }
+        </a>
+
+        @if (auth.isLoggedIn()) {
+          <a class="header__profile" routerLink="/profil" (click)="closeMenu()">{{ auth.user()?.name }}</a>
+          <button class="btn btn-ghost btn-sm" type="button" (click)="logout()">Изход</button>
+        } @else {
+          <a class="btn btn-outline btn-sm" routerLink="/vhod" (click)="closeMenu()">Вход</a>
+          <a class="btn btn-primary btn-sm" routerLink="/registratsiya" (click)="closeMenu()">Регистрация</a>
+        }
+      </div>
+    </nav>
+  </div>
+
+  @if (searchOpen()) {
+    <div class="search-panel">
+      <div class="container search-panel__inner">
+        <form class="search-panel__form" (submit)="onSearchSubmit($event)">
+          <span class="search-panel__icon">⌕</span>
+          <input
+            class="search-panel__input"
+            type="search"
+            placeholder="Търсете по думи или израз — заглавие, автор, тема…"
+            [value]="searchTerm()"
+            (input)="onSearchInput($any($event.target).value)"
+            autofocus
+          >
+          <button class="btn btn-primary btn-sm" type="submit">Търси</button>
+        </form>
+
+        @if (searchTerm().trim().length > 0) {
+          <div class="search-panel__results">
+            @if (searchLoading()) {
+              <p class="text-muted search-panel__hint">Търсене…</p>
+            } @else if (searchResults().length === 0) {
+              <p class="text-muted search-panel__hint">Няма намерени резултати за „{{ searchTerm() }}“.</p>
+            } @else {
+              <ul>
+                @for (book of searchResults().slice(0, 6); track book._id) {
+                  <li>
+                    <button type="button" (click)="goToBook(book)">
+                      <span class="search-panel__result-title">{{ book.title }}</span>
+                      <span class="search-panel__result-author text-muted">{{ book.author }}</span>
+                    </button>
+                  </li>
+                }
+              </ul>
+              <button class="search-panel__all" type="button" (click)="submitSearch()">
+                Виж всички резултати за „{{ searchTerm() }}“
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  }
+</header>

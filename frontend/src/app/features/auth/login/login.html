@@ -1,0 +1,30 @@
+<section class="section auth-section">
+  <div class="container auth-container">
+    <form class="card auth-card" [formGroup]="form" (ngSubmit)="submit()">
+      <span class="eyebrow">Вход</span>
+      <h1>Влезте в профила си</h1>
+
+      @if (error()) {
+        <p class="alert alert-error">{{ error() }}</p>
+      }
+
+      <div class="form-field">
+        <label for="email">Имейл</label>
+        <input id="email" type="email" formControlName="email" autocomplete="email">
+      </div>
+
+      <div class="form-field">
+        <label for="password">Парола</label>
+        <input id="password" type="password" formControlName="password" autocomplete="current-password">
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="loading()">
+        {{ loading() ? 'Влизане…' : 'Вход' }}
+      </button>
+
+      <p class="auth-card__footer">
+        Нямате профил? <a routerLink="/registratsiya">Регистрирайте се</a>
+      </p>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Онлайн магазин</span>
+    <h1>Количка</h1>
+
+    @if (items().length === 0) {
+      <p class="text-muted">Количката ви е празна.</p>
+      <a class="btn btn-primary" routerLink="/knigi">Разгледай книгите</a>
+    } @else {
+      <div class="cart">
+        <ul class="cart__list">
+          @for (item of items(); track item.bookId) {
+            <li class="cart__item card">
+              <div class="cart__cover">
+                @if (item.coverImage) {
+                  <img [src]="item.coverImage" [alt]="item.title">
+                } @else {
+                  <span>{{ item.title.charAt(0) }}</span>
+                }
+              </div>
+
+              <div class="cart__details">
+                <h3>{{ item.title }}</h3>
+                <p class="text-muted">{{ item.author }}</p>
+              </div>
+
+              <div class="qty">
+                <button type="button" (click)="updateQuantity(item.bookId, item.quantity - 1)">−</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" (click)="updateQuantity(item.bookId, item.quantity + 1)">+</button>
+              </div>
+
+              <span class="cart__price">{{ (item.price * item.quantity).toFixed(2) }} лв.</span>
+
+              <button class="cart__remove" type="button" (click)="remove(item.bookId)" aria-label="Премахни">
+                ✕
+              </button>
+            </li>
+          }
+        </ul>
+
+        <aside class="cart__summary card">
+          <h3>Обобщение</h3>
+          <div class="cart__summary-row">
+            <span>Общо</span>
+            <strong>{{ total().toFixed(2) }} лв.</strong>
+          </div>
+          <a class="btn btn-primary btn-block" routerLink="/plashtane">Продължи към плащане</a>
+          <button class="btn btn-ghost btn-block" type="button" (click)="clear()">Изчисти количката</button>
+        </aside>
+      </div>
+    }
+  </div>
+</section>

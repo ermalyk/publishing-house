@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container goals-hero">
+    <span class="eyebrow">Нашата мисия</span>
+    <h1>Целите на издателство „Млада гвардия“</h1>
+    <p class="text-muted goals-hero__lead">
+      Основани на принципите на солидарността и социалната справедливост, работим, за да
+      съхраним историческата памет и да дадем трибуна на гласове, които рядко стигат до
+      масовия читател.
+    </p>
+  </div>
+</section>
+
+<section class="section section--muted">
+  <div class="container goals-grid">
+    @for (goal of goals; track goal.title) {
+      <article class="card goal-card">
+        <h3>{{ goal.title }}</h3>
+        <p class="text-muted">{{ goal.text }}</p>
+      </article>
+    }
+  </div>
+</section>

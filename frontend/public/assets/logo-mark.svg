@@ -1,0 +1,23 @@
+<svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Емблема на издателство Млада гвардия">
+  <defs>
+    <linearGradient id="mg-red" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c62828"/>
+      <stop offset="100%" stop-color="#6e1414"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="120" cy="120" r="112" fill="url(#mg-red)"/>
+  <circle cx="120" cy="120" r="112" fill="none" stroke="#3d0d0d" stroke-width="3"/>
+
+  <path d="M120,158 C118,120 100,100 62,96 C60,100 58,150 62,158 C80,172 104,170 120,158 Z" fill="#f3e6d3"/>
+  <path d="M120,158 C122,120 140,100 178,96 C180,100 182,150 178,158 C160,172 136,170 120,158 Z" fill="#f3e6d3"/>
+
+  <path d="M75,106 C88,122 100,138 110,150" stroke="#c62828" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M68,124 C82,135 96,146 106,154" stroke="#c62828" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M165,106 C152,122 140,138 130,150" stroke="#c62828" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M172,124 C158,135 144,146 134,154" stroke="#c62828" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+  <path d="M120,96 L120,160" stroke="#6e1414" stroke-width="2" stroke-linecap="round"/>
+
+  <path d="M120,62 L124.11,72.34 L135.22,73.06 L126.66,80.16 L129.40,90.94 L120,85 L110.60,90.94 L113.34,80.16 L104.78,73.06 L115.89,72.34 Z" fill="#f3e6d3"/>
+</svg>

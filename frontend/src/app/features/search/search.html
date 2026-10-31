@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Търсачка</span>
+    <h1>Намерете книга</h1>
+
+    <input
+      class="search-input"
+      type="search"
+      placeholder="Търсете по заглавие, автор или ключова дума…"
+      [value]="term()"
+      (input)="onInput($any($event.target).value)"
+    >
+
+    @if (loading()) {
+      <app-spinner />
+    } @else if (term().trim().length === 0) {
+      <p class="text-muted">Въведете заявка, за да започнете търсене.</p>
+    } @else if (results().length === 0) {
+      <p class="text-muted">Няма намерени резултати за „{{ term() }}“.</p>
+    } @else {
+      <div class="grid-books">
+        @for (book of results(); track book._id) {
+          <app-book-card [book]="book" />
+        }
+      </div>
+    }
+  </div>
+</section>

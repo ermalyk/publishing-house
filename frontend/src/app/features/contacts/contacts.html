@@ -1,0 +1,61 @@
+<section class="section">
+  <div class="container contacts">
+    <div class="contacts__info">
+      <span class="eyebrow">Свържете се с нас</span>
+      <h1>Контакти</h1>
+      <p class="text-muted">
+        Имате въпрос за поръчка, сътрудничество или предложение за книга? Пишете ни — четем
+        всяко съобщение.
+      </p>
+
+      <ul class="contacts__list">
+        <li><strong>Адрес:</strong> гр. София, ул. „Пример“ 1</li>
+        <li><strong>Имейл:</strong> office&#64;mladagvardiya.bg</li>
+        <li><strong>Телефон:</strong> +359 2 000 0000</li>
+        <li><strong>Работно време:</strong> Пон–Пет, 09:00–18:00</li>
+      </ul>
+    </div>
+
+    <form class="card contacts__form" [formGroup]="form" (ngSubmit)="submit()">
+      @if (success()) {
+        <p class="alert alert-success">Съобщението е изпратено успешно. Ще се свържем с вас скоро.</p>
+      }
+      @if (error()) {
+        <p class="alert alert-error">{{ error() }}</p>
+      }
+
+      <div class="form-field">
+        <label for="name">Име</label>
+        <input id="name" type="text" formControlName="name">
+        @if (form.controls.name.invalid && form.controls.name.touched) {
+          <span class="field-error">Моля, въведете име.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="email">Имейл</label>
+        <input id="email" type="email" formControlName="email">
+        @if (form.controls.email.invalid && form.controls.email.touched) {
+          <span class="field-error">Моля, въведете валиден имейл.</span>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="subject">Тема</label>
+        <input id="subject" type="text" formControlName="subject">
+      </div>
+
+      <div class="form-field">
+        <label for="message">Съобщение</label>
+        <textarea id="message" formControlName="message"></textarea>
+        @if (form.controls.message.invalid && form.controls.message.touched) {
+          <span class="field-error">Съобщението трябва да е поне 10 символа.</span>
+        }
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Изпращане…' : 'Изпрати съобщение' }}
+      </button>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+@if (loading()) {
+  <app-spinner />
+} @else if (book(); as b) {
+  <section class="section">
+    <div class="container book-detail">
+      <div class="book-detail__cover">
+        @if (b.coverImage) {
+          <img [src]="b.coverImage" [alt]="b.title">
+        } @else {
+          <span>{{ b.title.charAt(0) }}</span>
+        }
+      </div>
+
+      <div class="book-detail__info">
+        <a class="back-link" routerLink="/knigi">&larr; Обратно към книгите</a>
+        <span class="badge">{{ b.type }} · {{ b.category }}</span>
+        <h1>{{ b.title }}</h1>
+        <p class="book-detail__author">от {{ b.author }}</p>
+
+        <p class="book-detail__description">{{ b.description }}</p>
+
+        <dl class="book-detail__meta">
+          @if (b.pages) {
+            <div><dt>Страници</dt><dd>{{ b.pages }}</dd></div>
+          }
+          @if (b.publishedYear) {
+            <div><dt>Година</dt><dd>{{ b.publishedYear }}</dd></div>
+          }
+          @if (b.isbn) {
+            <div><dt>ISBN</dt><dd>{{ b.isbn }}</dd></div>
+          }
+          <div><dt>Наличност</dt><dd>{{ b.stock > 0 ? 'в наличност' : 'изчерпана' }}</dd></div>
+        </dl>
+
+        <div class="book-detail__buy">
+          <span class="book-detail__price">{{ b.price.toFixed(2) }} лв.</span>
+
+          <div class="qty">
+            <button type="button" (click)="changeQuantity(-1)">−</button>
+            <span>{{ quantity() }}</span>
+            <button type="button" (click)="changeQuantity(1)">+</button>
+          </div>
+
+          <button class="btn btn-primary" type="button" [disabled]="b.stock === 0" (click)="addToCart()">
+            Добави в количката
+          </button>
+        </div>
+
+        @if (added()) {
+          <p class="alert alert-success">Книгата е добавена в количката.</p>
+        }
+      </div>
+    </div>
+  </section>
+} @else {
+  <section class="section">
+    <div class="container">
+      <p class="text-muted">Книгата не е намерена.</p>
+    </div>
+  </section>
+}
